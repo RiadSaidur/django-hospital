@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital</title>
+  <link rel="stylesheet" href="./stylesheets/index.css">
+</head>
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  li {
+    list-style: none;
+  }
+  body {
+    height: 100vh;
+    background-color: #fcfbfe;
+    display: flex;
+  }
+  aside {
+    height: 100%;
+    width: 18rem;
+    padding: 2rem;
+  }
+  nav {
+    padding-top: 2rem;
+  }
+  header {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: rgb(201, 247, 193); */
+  }
+  header a {
+    padding: .5rem 1rem;
+    color: #f4f0fc;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    background-color: dodgerblue;
+  }
+  .container {
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 3rem;
+  }
+  .container h2 {
+    text-align: center;
+  }
+  main {
+    padding-top: 1rem;
+  }
+  .contents {
+    display: flex;
+    background-color: #fcfbfe;
+    justify-content: space-evenly;
+    padding: 3rem 0;
+    margin: 2rem 2rem;
+  }
+  .app {
+    padding: 1.5rem 3rem;
+    width: max-content;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    cursor: pointer;
+  }
+  .app h3 {
+    padding-bottom: .5rem;
+  }
+</style>
+
+<body>
+  <aside>
+    <h1>Hospital</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">New Appointment</a>
+        </li>
+        <li>
+          <a href="#">Appointments</a>
+        </li>
+        <li>
+          <a href="#">History</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="container">
+    <header>
+      <h1>Hospital</h1>
+      <a href="#">New Appointment</a>
+    </header>
+    <main>
+      <h2>Welcome Bro!</h2>
+      <div class="contents">
+        <div class="app">
+          <h3>Next Appointment</h3>
+          <p>Doctor Name</p>
+          <p>Date: March 26, 2112</p>
+        </div>
+        <div class="app">
+          <h3>Last Appointment</h3>
+          <p>Doctor Name</p>
+          <p>Date: March 26, 1560</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
