@@ -5,4 +5,5 @@ def index(request):
   context = {
     'form': AppointmentForm()
   }
+  print(request)
   return render(request, 'index.html')

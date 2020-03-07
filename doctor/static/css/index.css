@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+li {
+  list-style: none;
+}
+button {
+  background: none;
+  border: none;
+}
+body {
+  height: 100vh;
+  background-color: #fcfbfe;
+  display: flex;
+  font-family: 'Nunito', sans-serif;
+}
+aside {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.1rem 2rem;
+}
+aside img {
+  height: 1.8rem;
+  cursor: pointer;
+}
+aside ul li {
+  display: block;
+  padding: 1rem 0;
+  line-height: 2rem;
+}
+aside div {
+  display: none;
+  padding-left: .5rem;
+}
+nav {
+  padding-top: 2rem;
+}
+nav a {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+header {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn {
+  padding: .5rem 1rem;
+  color: #f4f0fc;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  background-color: dodgerblue;
+}
+.btn:active {
+  background-color: hotpink;
+  transform: scale(.9);
+  transition: all 500ms ease-out;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-bottom-left-radius: 3rem;
+}
+.container h2 {
+  text-align: center;
+}
+main {
+  padding-top: 1rem;
+}
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fcfbfe;
+  justify-content: space-evenly;
+  padding: 3rem 2rem;
+  margin: 2rem 2rem;
+}
+.app {
+  margin: 2rem 0;
+  padding: 1.5rem 3rem;
+  width: max-content;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  cursor: pointer;
+}
+.app h3 {
+  padding-bottom: .5rem;
+}
+.menu {
+  display: inherit;
+}
+@media only screen and (max-width: 800px) {
+  aside {
+    padding: 1.1rem .7rem;
+  }
+  .contents {
+    padding: 3rem 0;
+    margin: 2rem 1rem;
+  }
+}

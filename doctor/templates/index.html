@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital</title>
+  <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" >
+</head>
+<body>
+  <aside>
+    <img src={% static '/assets/hamburger.svg' %} alt="menu">
+    <nav>
+      <ul>
+        <li>
+          <a href="#">
+            <img src={% static '/assets/edit.svg' %}>
+            <div>Appointment</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src={% static '/assets/clipboard.svg' %}>
+            <div>History</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="container">
+    <header>
+      <h1><a href="#">Hospital</a></h1>
+      <a href="#" class="btn">New Appointment</a>
+    </header>
+    <main>
+      <h2>Welcome Bro!</h2>
+      <div class="contents">
+        <div class="app">
+          <h3>Next Appointment</h3>
+          <p>Doctor Name</p>
+          <p>March 26, 2112</p>
+        </div>
+        <div class="app">
+          <h3>Last Appointment</h3>
+          <p>Doctor Name</p>
+          <p>March 26, 1560</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src={% static 'js/index.js' %}></script>
+</body>
+</html>

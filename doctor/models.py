@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 class Patient(models.Model):
   name = models.CharField(max_length=50)
@@ -6,7 +7,7 @@ class Patient(models.Model):
   gender = models.CharField(max_length=1)
 
   def __str__(self):
-    return self.name
+    return str(self.name)
 
 class Doctor(models.Model):
   name = models.CharField(max_length=50)
@@ -14,14 +15,14 @@ class Doctor(models.Model):
   available = models.PositiveIntegerField(default=0)
 
   def __str__(self):
-    return self.name
+    return str(self.name)
 
 class Assistant(models.Model):
   name =  models.CharField(max_length=50)
   docid = models.OneToOneField('Doctor', on_delete=models.CASCADE)
 
   def __str__(self):
-    return self.name
+    return str(self.name)
 
 class Appointment(models.Model):
   confirmed = models.BooleanField(default=False)
@@ -30,4 +31,9 @@ class Appointment(models.Model):
   assid = models.ForeignKey('Assistant', on_delete=models.CASCADE)
 
   def __str__(self):
-    return self.patid
+    return str(self.patid)
+
+class AppointmentForm(ModelForm):
+  class Meta:
+    model = Appointment
+    fields = ['patid', 'docid', 'assid']
