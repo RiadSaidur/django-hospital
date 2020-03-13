@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital</title>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" >
+  <link rel="icon" href={% static 'assets/hospital.svg' %}>
+</head>
+<body>
+  <aside>
+    <img src={% static '/assets/hamburger.svg' %} alt="menu">
+    <nav>
+      <ul>
+        <li>
+          <a href="#">
+            <img src={% static '/assets/edit.svg' %}>
+            <div>Appointment</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src={% static '/assets/clipboard.svg' %}>
+            <div>History</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="container">
+    <header>
+      <h1><a href="{% url 'index' %}">Hospital</a></h1>
+      <a href="{% url 'register' %}" class="btn">Sign Up</a>
+    </header>
+    {% block content %} {% endblock content %}
+  </div>
+
+  <script src={% static 'js/base.js' %}></script>
+</body>
+</html>
