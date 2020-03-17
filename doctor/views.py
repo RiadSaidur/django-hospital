@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from doctor.forms.registerFrom import UserRegistrationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def makeAppointment(request):
+  context = {}
+  return render(request, 'makeAppointment.html', context)
 
 def index(request):
   return render(request, 'index.html')
 
-def register(request):
+def signup(request):
   if request.method == 'POST':
     form = UserRegistrationForm(request.POST)
     if form.is_valid():
@@ -21,4 +27,4 @@ def register(request):
     'form': form
   }
 
-  return render(request, 'register.html', context)
+  return render(request, 'signup.html', context)
