@@ -4,7 +4,7 @@
 {% block content %}
 <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" >
   <main>
-    <h2>Welcome Bro!</h2>
+    <h2>Welcome {{ user.username }}</h2>
     <div class="contents">
       <div class="app">
         <h3>Next Appointment</h3>

@@ -20,42 +20,43 @@ body {
   height: 100vh;
   background-color: #fcfbfe;
   display: flex;
+  flex-direction: column-reverse;
   font-family: 'Nunito', sans-serif;
 }
+#menu {
+  display: none;
+}
 aside {
-  height: 100%;
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 1.1rem 2rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: white;
 }
 aside img {
   height: 1.8rem;
   cursor: pointer;
 }
+aside ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 aside ul li {
   display: block;
-  padding: 1rem 0;
-  line-height: 2rem;
 }
 aside div {
   display: none;
   padding-left: .5rem;
 }
-nav {
-  padding-top: 2rem;
-}
-nav a {
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-}
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   height: 4rem;
   align-items: center;
   justify-content: space-around;
+  background-color: whitesmoke;
 }
 .btn {
   padding: .5rem 1rem;
@@ -79,12 +80,39 @@ header {
 .menu {
   display: inherit;
 }
-@media only screen and (max-width: 800px) {
-  aside {
-    padding: 1.1rem .7rem;
+.secondary {
+  background-color: #f4f0fc;
+  color: black;
+  border: 2px dodgerblue groove;
+  margin-right: .1rem;
+}
+@media only screen and (min-width: 800px) {
+  body {
+    flex-direction: row;
   }
-  .contents {
-    padding: 3rem 0;
-    margin: 2rem 1rem;
+  #menu {
+    display: initial;
+  }
+  aside {
+    position: initial;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  aside ul {
+    display: initial;
+  }
+  aside ul li {
+    padding: 1rem 0;
+    line-height: 2rem;
+  }
+  nav {
+    padding-top: 2rem;
+  }
+  nav a {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
   }
 }

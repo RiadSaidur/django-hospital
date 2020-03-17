@@ -11,11 +11,11 @@
 </head>
 <body>
   <aside>
-    <img src={% static '/assets/hamburger.svg' %} alt="menu">
+    <img src={% static '/assets/hamburger.svg' %} alt="menu" id='menu'>
     <nav>
       <ul>
         <li>
-          <a href="#">
+          <a href="{% url 'makeAppointment' %}">
             <img src={% static '/assets/edit.svg' %}>
             <div>Appointment</div>
           </a>
@@ -32,7 +32,14 @@
   <div class="container">
     <header>
       <h1><a href="{% url 'index' %}">Hospital</a></h1>
-      <a href="{% url 'register' %}" class="btn">Sign Up</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'signout' %}" class="btn">Log Out</a>
+      {% else %}
+        <div>
+          <a href="{% url 'signin' %}" class="btn secondary">Sign In</a>
+          <a href="{% url 'signup' %}" class="btn">Sign Up</a>
+        </div>
+      {% endif %}
     </header>
     {% block content %} {% endblock content %}
   </div>
