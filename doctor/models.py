@@ -1,13 +1,14 @@
 from django.db import models
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 class Patient(models.Model):
-  name = models.CharField(max_length=50)
-  age = models.PositiveSmallIntegerField()
-  gender = models.CharField(max_length=1)
+  user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+  age = models.PositiveSmallIntegerField(null=True)
+  gender = models.CharField(max_length=1, null=True)
 
   def __str__(self):
-    return str(self.name)
+    return str(self.user.username)
 
 class Doctor(models.Model):
   name = models.CharField(max_length=50)
@@ -19,7 +20,7 @@ class Doctor(models.Model):
 
 class Assistant(models.Model):
   name =  models.CharField(max_length=50)
-  docid = models.OneToOneField('Doctor', on_delete=models.CASCADE)
+  docid = models.ForeignKey('Doctor', on_delete=models.CASCADE)
 
   def __str__(self):
     return str(self.name)
