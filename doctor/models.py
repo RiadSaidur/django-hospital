@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
   user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-  age = models.PositiveSmallIntegerField(null=True)
-  gender = models.CharField(max_length=1, null=True)
+  fullname = models.CharField(max_length=50)
+  age = models.PositiveSmallIntegerField(null=True, blank=True)
+  gender = models.CharField(max_length=1, null=True, blank=True)
 
   def __str__(self):
     return str(self.user.username)

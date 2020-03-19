@@ -17,9 +17,8 @@ def signup(request):
     if form.is_valid():
       form.save()
       user = form.cleaned_data.get('username')
-      print('NICE')
-      messages.success(request, 'NICE BRO!')
-      return redirect('index')
+      messages.success(request, 'You can Sign In now')
+      return redirect('signin')
   else:
     form = UserRegistrationForm()
 

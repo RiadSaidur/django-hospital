@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Patient, Assistant, Doctor, Appointment
 
 class PatientAdmin(admin.ModelAdmin):
-  fields = ['user', 'age', 'gender']
+  fields = ['user', 'fullname', 'age', 'gender']
 
 class AssistantAdmin(admin.ModelAdmin):
   fields = ['name', 'docid']
