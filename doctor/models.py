@@ -1,10 +1,8 @@
 from django.db import models
-from django.forms import ModelForm
 from django.contrib.auth.models import User
 
 class Patient(models.Model):
-  user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-  fullname = models.CharField(max_length=50)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
   age = models.PositiveSmallIntegerField(null=True, blank=True)
   gender = models.CharField(max_length=1, null=True, blank=True)
 
@@ -20,22 +18,25 @@ class Doctor(models.Model):
     return str(self.name)
 
 class Assistant(models.Model):
-  name =  models.CharField(max_length=50)
-  docid = models.ForeignKey('Doctor', on_delete=models.CASCADE)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE)
+  notifications = models.PositiveIntegerField(default=0)
 
   def __str__(self):
-    return str(self.name)
+    return str(self.user.username)
+
+class Request(models.Model):
+  confirmed = models.BooleanField(default=False)
+  patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
+  doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE)
+  created_at = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return f'{self.doctor} - {self.created_at}'
 
 class Appointment(models.Model):
-  confirmed = models.BooleanField(default=False)
-  patid = models.OneToOneField('Patient', on_delete=models.CASCADE)
-  docid = models.ForeignKey('Doctor', on_delete=models.CASCADE)
-  assid = models.ForeignKey('Assistant', on_delete=models.CASCADE)
+  request = models.ForeignKey('Request', on_delete=models.CASCADE)
+  created_at = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return str(self.patid)
-
-class AppointmentForm(ModelForm):
-  class Meta:
-    model = Appointment
-    fields = ['patid', 'docid', 'assid']
+    return f'{self.request.doctor} - {self.request.patient}'
