@@ -3,7 +3,7 @@
 
 {% block content %}
 <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
-  <main
+  <main>
     <form method="POST">
       {% csrf_token %}
       {{ form }}

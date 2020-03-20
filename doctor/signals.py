@@ -14,18 +14,16 @@ def save_Patient(sender, instance, **kwargs):
   instance.patient.save()
 
 @receiver(post_save, sender=Request)
-def save_Patient(sender, instance, **kwargs):
-  if instance.confirmed:
-    Appointment.objects.create(request = instance)
-  if not instance.confirmed:
-    Appointment.objects.get(request = instance).delete()
-
-@receiver(post_save, sender=Request)
 def update_notification(sender, instance, created, **kwargs):
   if created:
     assistant = Assistant.objects.get(doctor=instance.doctor)
     assistant.notifications += 1
     assistant.save()
+  else:
+    if instance.confirmed:
+      Appointment.objects.create(request = instance)
+    if not instance.confirmed:
+      Appointment.objects.get(request = instance).delete()
 
 @receiver(post_delete, sender=Request)
 def delete_notification(sender, instance, using, **kwargs):

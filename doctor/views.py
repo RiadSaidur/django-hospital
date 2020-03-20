@@ -1,12 +1,31 @@
 from django.shortcuts import render, redirect
-from doctor.forms.registerFrom import UserRegistrationForm
+from doctor.forms import UserRegistrationForm, RequestForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Request, Appointment
+from .models import Request, Appointment, Patient
 
 @login_required
 def makeAppointment(request):
-  context = {}
+  if request.method == 'POST':
+    form = RequestForm(request.POST)
+    
+    if form.is_valid():
+      patient = Patient.objects.get(user = request.user)
+      instance = form.save(commit=False)
+      instance.patient = patient
+      instance.save()
+      messages.success(request, 'Appointment Requested')
+      form = RequestForm()
+    
+  else: 
+    form = RequestForm()
+
+  appointments = Request.objects.all()[:5]
+
+  context = {
+    'form': form,
+    'appointments': appointments
+  }
   return render(request, 'makeAppointment.html', context)
 
 @login_required
@@ -30,7 +49,6 @@ def index(request):
     'prev_app': prev_app,
     'next_app': next_app
   }
-  print(next_app)
   return render(request, 'index.html', context)
 
 def signup(request):

@@ -4,7 +4,7 @@
 {% block content %}
 <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" >
   <main>
-    <h2>Welcome {{ user.username }}</h2>
+    <h2>Welcome <a href="{% url 'profile' %}">{{ user.username }}</a></h2>
     <div class="contents">
       <div class="app">
         <h3>Next Appointment</h3>
@@ -17,7 +17,7 @@
       </div>
       <div class="app">
         <h3>Last Appointment</h3>
-        {% if prev_app %}
+        {% if next_app %}
           <p>{{ next_app.request.doctor }}</p>
           <p>{{ next_app.created_at }}</p>
         {% else %}

@@ -2,6 +2,31 @@
 {% load static %}
 {% block content %}
   <main>
-    Nice
+  <link rel="stylesheet" href="{% static 'css/makeAppointment.css' %}">    
+    <div class="form">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="msg">
+            <p class="msg">{{ message }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Make Appointment</button>
+      </form>
+    </div>
+    {% if appointments %}
+      <ul class="history">
+        <div>History</div>
+        {% for appointment in appointments %}
+          <li id={% if appointment.confirmed %} "confirmed" {% endif %} >
+            <p>{{ appointment.doctor }}</p>
+            <p>{{ appointment.created_at }}</p>
+          </li>  
+        {% endfor %}
+      </ul>
+    {% endif %}
   </main>
 {% endblock content %}
