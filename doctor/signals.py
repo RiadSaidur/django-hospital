@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save, post_delete
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from .models import Patient, Request
+from .models import Patient, Request, Appointment
 from assistant.models import Assistant
 
 @receiver(post_save, sender=User)
@@ -12,6 +12,13 @@ def create_patient(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_Patient(sender, instance, **kwargs):
   instance.patient.save()
+
+@receiver(post_save, sender=Request)
+def save_Patient(sender, instance, **kwargs):
+  if instance.confirmed:
+    Appointment.objects.create(request = instance)
+  if not instance.confirmed:
+    Appointment.objects.get(request = instance).delete()
 
 @receiver(post_save, sender=Request)
 def update_notification(sender, instance, created, **kwargs):
