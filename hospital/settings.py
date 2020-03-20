@@ -10,6 +10,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'assistant',
     'doctor',
     'django.contrib.admin',
     'django.contrib.auth',
