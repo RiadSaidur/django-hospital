@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from doctor.forms.registerFrom import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Appointment
+from .models import Request, Appointment
 
 @login_required
 def makeAppointment(request):
@@ -16,8 +16,6 @@ def create_profile(request):
 
 @login_required
 def profile(request):
-  app = Appointment.objects.filter(patid__user__username=request.user.username)
-  print(app)
   context = {
     'fullname': request.user.get_full_name(),
     'email': request.user.email,
@@ -26,8 +24,14 @@ def profile(request):
   return render(request, 'profile.html', context)
 
 def index(request):
-  context = {}
-  return render(request, 'index.html')
+  prev_app = Request.objects.filter(patient__user__username = request.user.username).first()
+  next_app = Appointment.objects.filter(request__patient__user__username = request.user.username).first()
+  context = {
+    'prev_app': prev_app,
+    'next_app': next_app
+  }
+  print(next_app)
+  return render(request, 'index.html', context)
 
 def signup(request):
   if request.method == 'POST':
