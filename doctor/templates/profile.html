@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css" >
+  <main>
+    <div class="info">
+      <h2>{{ fullname }}</h2>
+      <p class="light">{{ username }}</p>
+      <p class="light">{{ email }}</p>
+      <p>{{ patient.age }} years old {{ patient.gender }}</p>
+    </div>
+    <img src='{{ patient.picture.url }}' alt="Profile Picture">
+  </main>
+{% endblock content %}

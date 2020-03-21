@@ -1,0 +1,33 @@
+main {
+  margin: 1rem 1rem 5rem;
+  padding: 2rem 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+main img {
+  height: 300px;
+  border-radius: 50%;
+}
+
+.info {
+  margin-top: 1rem;
+}
+
+.info p:last-child {
+  margin-top: 1rem;
+}
+
+.light {
+  font-weight: 200;
+}
+
+@media only screen and (min-width: 800px) {
+  main {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: initial;
+  }
+}

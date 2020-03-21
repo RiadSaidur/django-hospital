@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "*"
-psycopg2 = = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"

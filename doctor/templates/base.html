@@ -15,6 +15,12 @@
     <nav>
       <ul>
         <li>
+          <a href="{% url 'profile' %}">
+            <img src={% static '/assets/user.svg' %}>
+            <div>Profile</div>
+          </a>
+        </li>
+        <li>
           <a href="{% url 'makeAppointment' %}">
             <img src={% static '/assets/edit.svg' %}>
             <div>Appointment</div>
