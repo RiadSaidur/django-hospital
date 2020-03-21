@@ -91,3 +91,6 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'signin'
+
+MEDIA_URL = '/photos/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'photos')

@@ -5,7 +5,8 @@ from assistant.models import Doctor
 class Patient(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   age = models.PositiveSmallIntegerField(null=True, blank=True)
-  gender = models.CharField(max_length=1, null=True, blank=True)
+  gender = models.CharField(max_length=6, null=True, blank=True)
+  picture = models.ImageField(null=True)
 
   def __str__(self):
     return str(self.user.username)

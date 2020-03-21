@@ -52,10 +52,12 @@ def create_profile(request):
 
 @login_required
 def profile(request):
+  patient = Patient.objects.get(user__username = request.user.username)
   context = {
     'fullname': request.user.get_full_name(),
     'email': request.user.email,
-    'username': request.user.username
+    'username': request.user.username,
+    'patient': patient
   }
   return render(request, 'profile.html', context)
 
