@@ -3,6 +3,7 @@ from doctor.forms import UserRegistrationForm, RequestForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Request, Appointment, Patient
+from doctor.decorators import only_unauthenticated
 
 @login_required
 def history(request, page):
@@ -70,6 +71,7 @@ def index(request):
   }
   return render(request, 'index.html', context)
 
+@only_unauthenticated
 def signup(request):
   if request.method == 'POST':
     form = UserRegistrationForm(request.POST)
