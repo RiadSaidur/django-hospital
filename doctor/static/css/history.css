@@ -1,0 +1,63 @@
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main .history {
+  display: initial;
+  flex: 1;
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
+  border-left: 1px groove rgba(128, 128, 128, 0.7);
+  background-color: white;
+}
+
+#confirmed {
+  background-color: rgba(172, 255, 47, 0.2);
+}
+
+.history > p {
+  text-align: center;
+  width: 100%;
+  padding-bottom: .2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px groove rgba(128, 128, 128, 0.5);
+}
+
+.history li{
+  margin-bottom: .5rem;
+  padding: .5rem 1rem;
+  border-bottom: 1px groove rgba(128, 128, 128, 0.5);
+  background-color: rgba(220, 20, 60, 0.1);
+}
+
+.history li p:last-child {
+  font-weight: 200;
+}
+
+.page-ctas {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.page-ctas > a {
+  background-color: lightblue;
+  padding: .5rem 2rem;
+}
+
+.page-ctas > a:last-child {
+  border-top-right-radius: 1000px;
+  border-bottom-right-radius: 1000px;
+}
+
+.page-ctas > a:first-child {
+  border-top-left-radius: 1000px;
+  border-bottom-left-radius: 1000px;
+}
+
+.page-ctas > a:active {
+  transform: scale(.9);
+  background-color: rgb(41, 180, 226);
+  transition: all 500ms ease-in;
+}
