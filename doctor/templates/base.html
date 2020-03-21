@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Description" content="Make  appoinments for Doctor from your home.">
   <title>Hospital</title>
   <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" >
   <link rel="icon" href={% static 'assets/hospital.svg' %}>
@@ -15,20 +16,20 @@
     <nav>
       <ul>
         <li>
-          <a href="{% url 'profile' %}">
-            <img src={% static '/assets/user.svg' %}>
+          <a href="{% url 'profile' %}" id="profile">
+            <img src={% static '/assets/user.svg' %} alt="profile">
             <div>Profile</div>
           </a>
         </li>
         <li>
-          <a href="{% url 'makeAppointment' %}">
-            <img src={% static '/assets/edit.svg' %}>
+          <a href="{% url 'makeAppointment' %}" id="makeAppointment">
+            <img src={% static '/assets/edit.svg' %} alt="makeAppointment">
             <div>Appointment</div>
           </a>
         </li>
         <li>
-          <a href="{% url 'history' page=1 %}">
-            <img src={% static '/assets/clipboard.svg' %}>
+          <a href="{% url 'history' page=1 %}" id="history">
+            <img src={% static '/assets/clipboard.svg' %} alt="history">
             <div>Histories</div>
           </a>
         </li>
