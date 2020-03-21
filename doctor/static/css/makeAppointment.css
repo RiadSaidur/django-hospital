@@ -34,6 +34,13 @@ form button {
   padding: .7rem 1rem;
   color: whitesmoke;
   font-size: 1rem;
+  cursor: pointer;
+  margin-top: .5rem;
+}
+
+form button:active {
+  transform: scale(.95);
+  transition: all 500ms ease-in;
 }
 
 .history {
