@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/history.css' %}">
+  <main>
+    {% if histories %}
+      <ul class="history">
+        <p>History | Page {{ page }}</p>
+        {% for history in histories %}
+          <li id={% if history.confirmed %} "confirmed" {% endif %} >
+            <p>{{ history.doctor }}</p>
+            <p>{{ history.created_at }}</p>
+          </li>  
+        {% endfor %}
+      </ul>
+    {% endif %}
+      <div class="page-ctas">
+        <a href="{% url 'history' page=prev %}">Previous</a>
+        {% if more %}
+          <a href="{% url 'history' page=next %}">Next</a>
+        {% endif %}
+      </div>
+  </main>
+{% endblock content %}

@@ -5,6 +5,23 @@ from django.contrib.auth.decorators import login_required
 from .models import Request, Appointment, Patient
 
 @login_required
+def history(request, page):
+  startAt = page + 4
+  endAt = startAt + 5
+
+  histories = Request.objects.all()[startAt : endAt]
+  more = histories.count() == 5
+
+  context = {
+    'histories': histories,
+    'next': page + 1,
+    'prev': page-1 or page,
+    'more': more,
+    'page': page
+  }
+  return render(request, 'history.html', context)
+
+@login_required
 def makeAppointment(request):
   if request.method == 'POST':
     form = RequestForm(request.POST)

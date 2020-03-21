@@ -19,7 +19,7 @@
     </div>
     {% if appointments %}
       <ul class="history">
-        <div>History</div>
+        <div><a href={% url 'history' page=1 %}>History</a></div>
         {% for appointment in appointments %}
           <li id={% if appointment.confirmed %} "confirmed" {% endif %} >
             <p>{{ appointment.doctor }}</p>
