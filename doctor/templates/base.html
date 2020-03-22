@@ -11,31 +11,39 @@
   <link rel="icon" href={% static 'assets/hospital.svg' %}>
 </head>
 <body>
-  <aside>
-    <img src={% static '/assets/hamburger.svg' %} alt="menu" id='menu'>
-    <nav>
-      <ul>
-        <li>
-          <a href="{% url 'profile' %}" id="profile">
-            <img src={% static '/assets/user.svg' %} alt="profile">
-            <div>Profile</div>
-          </a>
-        </li>
-        <li>
-          <a href="{% url 'makeAppointment' %}" id="makeAppointment">
-            <img src={% static '/assets/edit.svg' %} alt="makeAppointment">
-            <div>Appointment</div>
-          </a>
-        </li>
-        <li>
-          <a href="{% url 'history' page=1 %}" id="history">
-            <img src={% static '/assets/clipboard.svg' %} alt="history">
-            <div>Histories</div>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+  {% if user.is_authenticated %}
+    <aside>
+      <img src={% static '/assets/hamburger.svg' %} alt="menu" id='menu'>
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}" id="home">
+              <img src={% static '/assets/hospital.svg' %} alt="home">
+              <div>Home</div>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" id="profile">
+              <img src={% static '/assets/user.svg' %} alt="profile">
+              <div>Profile</div>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'makeAppointment' %}" id="makeAppointment">
+              <img src={% static '/assets/scroll.svg' %} alt="makeAppointment">
+              <div>Appointment</div>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'history' page=1 %}" id="history">
+              <img src={% static '/assets/clipboard.svg' %} alt="history">
+              <div>Histories</div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  {% endif %}
   <div class="container">
     <header>
       <h1><a href="{% url 'index' %}">Hospital</a></h1>

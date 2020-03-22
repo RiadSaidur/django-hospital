@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/update_profile.css' %}" rel="stylesheet" type="text/css" >
+  <main>
+    <h2>Hello {{user.username}}!</h2>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="form">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn">Update Profile</button>
+      </form>
+      <img src="{{ photoURL }}" alt="Profile Picture">
+    </div>
+  </main>
+{% endblock content %}

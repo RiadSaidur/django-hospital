@@ -4,10 +4,7 @@
 {% block content %}
 <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" >
   <main>
-  <div class="contents">
-    NOTHING TO SEE HERE :)
-  </div>
-    {% comment %} <h2>Welcome <a href="{% url 'profile' %}">{{ user.username }}</a></h2>
+    <h2>Welcome <a href="{% url 'profile' %}">{{ user.username }}</a></h2>
     <div class="contents">
       <div class="app">
         <h3>Next Appointment</h3>
@@ -27,6 +24,6 @@
           <p>You have no Previous Appointment.</p>
         {% endif %}
       </div>
-    </div> {% endcomment %}
+    </div>
   </main>
 {% endblock content %}
