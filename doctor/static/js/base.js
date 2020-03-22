@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
   const divs = document.querySelectorAll('nav div')
   const divArray = [...divs]
 
-  burger.addEventListener('click', () => {
+  burger?.addEventListener('click', () => {
     divArray.forEach(div => div.classList.toggle('menu'))
   })
 

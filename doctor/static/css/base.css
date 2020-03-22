@@ -56,7 +56,11 @@ header {
   height: 4rem;
   align-items: center;
   justify-content: space-around;
-  background-color: whitesmoke;
+  background-color: rgba(102, 204, 204, 0.7);
+  z-index: 1;
+}
+header a {
+  padding: 0 .25rem;
 }
 .btn {
   padding: .5rem 1rem;
@@ -74,17 +78,10 @@ header {
 .container {
   height: 100%;
   width: 100%;
-  background-color: whitesmoke;
   border-bottom-left-radius: 3rem;
 }
 .menu {
   display: inherit;
-}
-.secondary {
-  background-color: #f4f0fc;
-  color: black;
-  border: 2px dodgerblue groove;
-  margin-right: .1rem;
 }
 @media only screen and (min-width: 800px) {
   body {

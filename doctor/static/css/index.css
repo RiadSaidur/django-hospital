@@ -1,24 +1,120 @@
-main {
-  padding-top: 1rem;
+body {
+  background-color: #66CCCC;
 }
-main h2 {
+
+section {
+  padding: 4rem 2rem;
+}
+
+section:first-child {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-bottom: 0;
+}
+
+section:first-child > img {
+  width: 300px;
+  margin-top: 2rem;
+  align-self: flex-end;
+}
+
+section:nth-child(2) {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+section:nth-child(2) > h2 {
+  margin-bottom: 2rem;
   text-align: center;
 }
-.contents {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fcfbfe;
-  justify-content: space-evenly;
-  padding: 3rem 2rem;
-  margin: 2rem 2rem;
+
+.card {
+  text-align: center;
+  margin-bottom: 1rem;
 }
-.app {
-  margin: 2rem 0;
-  padding: 1.5rem 3rem;
-  width: max-content;
-  border: 1px solid rgba(128, 128, 128, 0.4);
+
+.card p {
+  margin: .5rem 0;
+}
+
+section:last-child {
+  background-color: white;
+  text-align: center;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+section:nth-child(3) {
+  text-align: center;
+}
+
+section:nth-child(3) > img {
+  width: 80vw;
+  margin-top: 2rem;
+}
+
+.primary-cta {
+  background-color: #FF748E;
+  padding: 1rem 1.25rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
 }
-.app h3 {
-  padding-bottom: .5rem;
+
+.primary-cta:active {
+  transform: scale(.9);
+  transition: all 500ms ease-out;
+}
+
+.primary-cta:active, .primary-cta:focus {
+  outline: none;
+}
+
+footer {
+  background-color: #FF748E;
+  padding: .75rem 0;
+  text-align: center;
+}
+
+@media only screen and (min-width: 800px) {
+  section:first-child {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  section:first-child > div {
+    margin-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  section:first-child > img {
+    height: 350px;
+    width: auto;
+  }
+
+  section:nth-child(2) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  section:nth-child(2) > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+  }
+
+  section:nth-child(3) > img {
+    height: 300px;
+  }
+
+  .card {
+    margin: 0 1rem;
+  }
 }
