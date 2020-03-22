@@ -1,0 +1,61 @@
+main {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1rem 1rem 5rem;
+  padding: 2rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  padding: 1% 5%;
+}
+ 
+form input, form select {
+  margin: .5rem 0;
+  padding: .5rem 1rem;
+}
+
+form option {
+  font-size: .9rem;
+}
+
+form button {
+  margin-top: 1rem;
+}
+
+/* .msg {
+  width: 15rem;
+  text-align: center;
+  padding: .5rem 1rem;
+} */
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+main img {
+  height: 250px;
+  border-radius: 50%;
+}
+
+@media only screen and (min-width: 800px) {
+  form {
+    width: 45%;
+  }
+  .form {
+    flex-direction: row;
+  }
+  main img {
+    height: 300px;
+  }
+}
