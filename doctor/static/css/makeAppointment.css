@@ -10,7 +10,7 @@ main .form{
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: white;
+  background-color: rgba(102, 204, 204, 0.2);
   padding: 2rem 0;
   margin: 0 1rem;
 }
@@ -27,20 +27,28 @@ form {
 form select {
   padding: .5rem 0;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 form button {
-  background-color: dodgerblue;
+  background-color: rgba(102, 204, 204, 0.8);
   padding: .7rem 1rem;
-  color: whitesmoke;
   font-size: 1rem;
   cursor: pointer;
   margin-top: .5rem;
 }
 
-form button:active {
-  transform: scale(.95);
-  transition: all 500ms ease-in;
+.form button:active {
+  outline: none;
+  background-color: rgb(102, 204, 204);
+  transform: scale(.9);
+  transition: all 500ms ease-out;
+}
+.form button:focus {
+  outline: none;
+}
+.form button:hover {
+  background-color: rgb(102, 204, 204);
 }
 
 .history {
@@ -58,7 +66,7 @@ form button:active {
     margin-right: 1rem;
     padding: 1rem 1rem;
     border-left: 1px groove rgba(128, 128, 128, 0.7);
-    background-color: white;
+    background-color: rgba(102, 204, 204, 0.2);
   }
 
   #confirmed {

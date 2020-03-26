@@ -16,25 +16,25 @@
       <img src={% static '/assets/hamburger.svg' %} alt="menu" id='menu'>
       <nav>
         <ul>
-          <li>
+          <li class="{% if 'home' in request.path %} active {% endif %}">
             <a href="{% url 'home' %}" id="home">
               <img src={% static '/assets/hospital.svg' %} alt="home">
               <div>Home</div>
             </a>
           </li>
-          <li>
+          <li class="{% if 'profile' in request.path %} active {% endif %}">
             <a href="{% url 'profile' %}" id="profile">
               <img src={% static '/assets/user.svg' %} alt="profile">
               <div>Profile</div>
             </a>
           </li>
-          <li>
+          <li class="{% if 'appointment' in request.path %} active {% endif %}">
             <a href="{% url 'makeAppointment' %}" id="makeAppointment">
               <img src={% static '/assets/scroll.svg' %} alt="makeAppointment">
               <div>Appointment</div>
             </a>
           </li>
-          <li>
+          <li class="{% if 'history' in request.path %} active {% endif %}">
             <a href="{% url 'history' page=1 %}" id="history">
               <img src={% static '/assets/clipboard.svg' %} alt="history">
               <div>Histories</div>

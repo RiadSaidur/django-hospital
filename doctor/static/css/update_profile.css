@@ -1,11 +1,12 @@
 main {
-  background-color: white;
+  background-color: rgba(102, 204, 204, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  margin: 1rem 1rem 5rem;
+  margin: 1rem 2rem 5rem;
   padding: 2rem 0;
+  overflow: auto;
 }
 
 form {
@@ -21,6 +22,10 @@ form input, form select {
   padding: .5rem 1rem;
 }
 
+form select {
+  cursor: pointer;
+}
+
 form option {
   font-size: .9rem;
 }
@@ -28,12 +33,6 @@ form option {
 form button {
   margin-top: 1rem;
 }
-
-/* .msg {
-  width: 15rem;
-  text-align: center;
-  padding: .5rem 1rem;
-} */
 
 .form {
   width: 100%;
@@ -57,5 +56,8 @@ main img {
   }
   main img {
     height: 300px;
+  }
+  main {
+    margin-bottom: 1rem;
   }
 }

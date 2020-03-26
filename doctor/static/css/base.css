@@ -31,11 +31,14 @@ aside {
   bottom: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: white;
+  background-color: rgba(102, 204, 204, 0.2);
 }
 aside img {
   height: 1.8rem;
   cursor: pointer;
+}
+aside > img {
+  transform: translateX(.25rem);
 }
 aside ul {
   display: flex;
@@ -44,6 +47,13 @@ aside ul {
 }
 aside ul li {
   display: block;
+  border-radius: 4px;
+  padding: .25rem .5rem;
+  margin-bottom: .25rem;
+}
+aside ul li:hover {
+  background-color: rgba(102, 204, 204, 0.3);
+  cursor: pointer;
 }
 aside div {
   display: none;
@@ -64,16 +74,22 @@ header a {
 }
 .btn {
   padding: .5rem 1rem;
-  color: white;
   border-radius: 2rem;
-  font-size: 1.1rem;
-  background-color: dodgerblue;
+  font-size: 1rem;
+  background-color: rgba(102, 204, 204, 0.8);
   cursor: pointer;
 }
 .btn:active {
-  background-color: hotpink;
+  outline: none;
+  background-color: rgb(102, 204, 204);
   transform: scale(.9);
   transition: all 500ms ease-out;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:hover {
+  background-color: rgb(102, 204, 204);
 }
 .container {
   height: 100%;
@@ -83,6 +99,9 @@ header a {
 .menu {
   display: inherit;
 }
+.active {
+  background-color: rgba(102, 204, 204, 0.8);
+}
 @media only screen and (min-width: 800px) {
   body {
     flex-direction: row;
@@ -91,7 +110,8 @@ header a {
     display: initial;
   }
   aside {
-    position: initial;
+    position: inherit;
+    height: 100%;
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -101,7 +121,6 @@ header a {
     display: initial;
   }
   aside ul li {
-    padding: 1rem 0;
     line-height: 2rem;
   }
   nav {
@@ -111,5 +130,6 @@ header a {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    padding: .5rem .25rem;
   }
 }
