@@ -17,7 +17,7 @@ def home(request):
 
 @login_required
 def history(request, page):
-  startAt = page + 4
+  startAt = (page-1) * 5
   endAt = startAt + 5
 
   histories = Request.objects.all()[startAt : endAt]
