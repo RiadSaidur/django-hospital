@@ -116,6 +116,7 @@ footer {
 
   section:nth-child(3) > img {
     height: 300px;
+    width: 540px;
   }
 
   .card {
