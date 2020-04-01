@@ -67,7 +67,7 @@ header {
   align-items: center;
   justify-content: space-around;
   background-color: rgba(102, 204, 204, 0.7);
-  z-index: 1;
+  z-index: 20;
 }
 header a {
   padding: 0 .25rem;

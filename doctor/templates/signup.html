@@ -4,11 +4,14 @@
 {% block content %}
 <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
   <main>
-    <form method="POST">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit" class="btn">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+    <img src="{% static 'assets/signup.svg' %}" alt="Sign Up">
+    <div>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+    </div>
   </main>
 {% endblock content %}
