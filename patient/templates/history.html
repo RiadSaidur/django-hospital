@@ -14,14 +14,14 @@
           </li>  
         {% endfor %}
       </ul>
-      <div class="page-ctas">
-        <a href="{% url 'history' page=prev %}">Previous</a>
-        {% if more %}
-          <a href="{% url 'history' page=next %}">Next</a>
-        {% endif %}
-      </div>
       {% else %}
-        <P class='blank'>You have no appointment history. Stay blessed!</p>
+        <P class='blank'>You have no more appointment history. Stay blessed!</p>
     {% endif %}
+    <div class="page-ctas">
+      <a href="{% url 'history' page=prev %}">Previous</a>
+      {% if more %}
+        <a href="{% url 'history' page=next %}">Next</a>
+      {% endif %}
+    </div>
   </main>
 {% endblock content %}
