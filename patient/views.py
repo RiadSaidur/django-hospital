@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from doctor.forms import UserRegistrationForm, RequestForm, PatientForm
+from patient.forms import RequestForm, PatientForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Request, Appointment, Patient
-from doctor.decorators import only_unauthenticated
 
 @login_required
 def home(request):
@@ -59,19 +58,20 @@ def makeAppointment(request):
 @login_required
 def update_profile(request):
   patient = Patient.objects.get(user = request.user)
-  photoURL = patient.picture.url
+  photo = patient.picture
   if request.method == 'POST':
-    form = PatientForm(request.POST, instance = patient)
+    form = PatientForm(request.POST, request.FILES, instance = patient)
     
     if form.is_valid():
       form.save()
       messages.success(request, 'Profile updated!')
+      return redirect('update_profile')
     
   else: 
     form = PatientForm(instance = patient)
   context = {
     'form': form,
-    'photoURL': photoURL
+    'photo': photo
   }
   return render(request, 'update_profile.html', context)
 
@@ -84,26 +84,3 @@ def profile(request):
     'patient': patient
   }
   return render(request, 'profile.html', context)
-
-@only_unauthenticated
-def index(request):
-  context = {}
-  return render(request, 'index.html', context)
-
-@only_unauthenticated
-def signup(request):
-  if request.method == 'POST':
-    form = UserRegistrationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      user = form.cleaned_data.get('username')
-      messages.success(request, 'You can Sign In now')
-      return redirect('signin')
-  else:
-    form = UserRegistrationForm()
-
-  context = {
-    'form': form
-  }
-
-  return render(request, 'signup.html', context)

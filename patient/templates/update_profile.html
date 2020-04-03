@@ -13,12 +13,15 @@
       {% endfor %}
     {% endif %}
     <div class="form">
-      <form method="POST">
+      <form enctype='multipart/form-data' method="POST">
         {% csrf_token %}
         {{ form }}
         <button type="submit" class="btn">Update Profile</button>
       </form>
-      <img src="{{ photoURL }}" alt="Profile Picture">
+      {% if photo %}
+        <img src='{{ photo.url }}' alt="Profile Picture">
+      {% endif %}
     </div>
   </main>
+  <script src={% static 'js/update_profile.js' %}></script>
 {% endblock content %}

@@ -31,7 +31,7 @@ aside {
   bottom: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: rgba(102, 204, 204, 0.2);
+  background-color: rgba(102, 204, 204, 0.7);
 }
 aside img {
   height: 1.8rem;
@@ -100,7 +100,7 @@ header a {
   display: inherit;
 }
 .active {
-  background-color: rgba(102, 204, 204, 0.8);
+  background-color: rgb(102, 204, 204);
 }
 @media only screen and (min-width: 800px) {
   body {
@@ -116,6 +116,7 @@ header a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: rgba(102, 204, 204, 0.2);
   }
   aside ul {
     display: initial;
@@ -131,5 +132,8 @@ header a {
     align-items: center;
     font-size: 1.2rem;
     padding: .5rem .25rem;
+  }
+  .active {
+    background-color: rgba(102, 204, 204, 0.8);
   }
 }

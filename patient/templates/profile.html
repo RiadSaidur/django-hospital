@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css" >
+  <main>
+    <div class="info">
+      <h2>{% if patient.fullname %}
+        {{ patient.fullname }}
+        {% else %}
+        Please update your Name
+      {% endif %}</h2>
+      <p class="light">{{ username }}</p>
+      <p class="light">{{ email }}</p>
+      <div class="details">
+        {% if patient.age and patient.gender %}
+          <p>{{ patient.age }} years old {{ patient.gender }}</p>
+          {% else %}
+          <p>Please update your Age and Gender</p>
+        {% endif %}
+        {% if patient.dob %}
+          <P>Date of Birth: {{ patient.dob }}</P>
+          {% else %}
+          <p>Please update your Date of Birth</p>
+        {% endif %}
+      </div>
+      <a href="{% url 'update_profile' %}" id="update_profile">Update Profile</a>
+    </div>
+    {% if patient.picture %}
+      <img src='{{ patient.picture.url }}' alt="Profile Picture">
+    {% endif %}
+  </main>
+{% endblock content %}

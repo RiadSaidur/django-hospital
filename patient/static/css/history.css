@@ -76,6 +76,11 @@ main .history {
   transition: all 500ms ease-in;
 }
 
+.blank {
+  margin: 2rem auto 0;
+  font-size: 1.2rem;
+}
+
 @media only screen and (min-width: 800px) {
   main {
     margin-bottom: 1rem;
