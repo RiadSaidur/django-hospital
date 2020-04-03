@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Doctor(models.Model):
   name = models.CharField(max_length=50)
   max_slots = models.PositiveIntegerField(default=10)
-  available = models.PositiveIntegerField(default=0)
+  available = models.PositiveIntegerField(default=10)
 
   def __str__(self):
     return str(self.name)
