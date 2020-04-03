@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant</title>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" >
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2><a href="{% url 'assistant:index' %}">Appointments</a></h1>
+      {% if user.is_authenticated %}
+        <a href="{% url 'signout' %}" class="btn">Log Out</a>
+      {% else %}
+        <div>
+          <a href="{% url 'signin' %}">Sign In</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
+        </div>
+      {% endif %}
+    </header>
+    {% block content %} {% endblock content %}
+  </div>
+</body>
+</html>

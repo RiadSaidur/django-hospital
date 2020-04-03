@@ -10,8 +10,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'users',
     'assistant',
-    'doctor',
+    'patient',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,7 +36,7 @@ ROOT_URLCONF = 'hospital.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['doctor/templates/'],
+        'DIRS': ['doctor/templates/', 'assistant/templates/', 'users/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
