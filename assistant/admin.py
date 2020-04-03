@@ -5,7 +5,7 @@ class AssistantAdmin(admin.ModelAdmin):
   fields = ['user', 'doctor', 'notifications']
 
 class DoctorAdmin(admin.ModelAdmin):
-  fields = ['name']
+  fields = ['name', 'max_slots', 'available']
 
 admin.site.register(Assistant, AssistantAdmin)
 admin.site.register(Doctor, DoctorAdmin)
