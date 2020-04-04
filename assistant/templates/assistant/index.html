@@ -10,7 +10,7 @@
         <p>Requests | {{ doctor }} | Available: {{ doctor.available }}</p>
         {% for req in reqs %}
           <li id={% if req.confirmed %} "confirmed" {% endif %} >
-            <p>{{ req.patient.fullname }}</p>
+            <p id="{{ req.id }}">{{ req.id }}. {{ req.patient.fullname }}</p>
             <p>{{ req.created_at }}</p>
           </li>  
         {% endfor %}
@@ -23,7 +23,7 @@
         <p>Accepted | {{ doctor }} {{ page }}</p>
         {% for accect in accepts %}
           <li id={% if accect.confirmed %} "confirmed" {% endif %} >
-            <p>{{ accect.patient.fullname }}</p>
+            <p id="{{ accect.id }}">{{ accect.id }}. {{ accect.patient.fullname }}</p>
             <p>{{ accect.created_at }}</p>
           </li>  
         {% endfor %}
