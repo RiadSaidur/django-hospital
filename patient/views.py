@@ -10,10 +10,10 @@ from .models import Request, Appointment, Patient
 @login_required
 @patient_only
 def home(request):
-  prev_app = Request.objects.filter(patient__user__username = request.user.username).first()
+  last_req = Request.objects.filter(patient__user__username = request.user.username).first()
   next_app = Appointment.objects.filter(request__patient__user__username = request.user.username).first()
   context = {
-    'prev_app': prev_app,
+    'last_req': last_req,
     'next_app': next_app
   }
   return render(request, 'home.html', context)

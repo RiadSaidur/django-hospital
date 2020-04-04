@@ -8,20 +8,20 @@
     <div class="contents">
       <div class="app">
         <h3>Next Appointment</h3>
-        {% if prev_app %}
-          <p>{{ prev_app.doctor }}</p>
-          <p>{{ prev_app.created_at }}</p>
+        {% if next_app %}
+          <p>{{ next_app.request.doctor }}</p>
+          <p>{{ next_app.created_at }}</p>
         {% else %}
           <p>You have no Appointment at the moment.</p>
         {% endif %}
       </div>
       <div class="app">
-        <h3>Last Appointment</h3>
-        {% if next_app %}
-          <p>{{ next_app.request.doctor }}</p>
-          <p>{{ next_app.created_at }}</p>
+        <h3>Last Request</h3>
+        {% if last_req %}
+          <p>{{ last_req.doctor }}</p>
+          <p>{{ last_req.created_at }}</p>
         {% else %}
-          <p>You have no Previous Appointment.</p>
+          <p>You have no Previous Requests.</p>
         {% endif %}
       </div>
     </div>
