@@ -5,27 +5,41 @@
 <link rel="stylesheet" href="{% static 'css/history.css' %}">
 <link rel="stylesheet" href="{% static 'css/assistant.css' %}">
   <main>
-    {% if reqs %}
+    {% if reqsForms %}
       <ul class="history">
         <p>Requests | {{ doctor }} | Available: {{ doctor.available }}</p>
-        {% for req in reqs %}
-          <li id={% if req.confirmed %} "confirmed" {% endif %} >
-            <p id="{{ req.id }}">{{ req.id }}. {{ req.patient.fullname }}</p>
-            <p>{{ req.created_at }}</p>
-          </li>  
+        {% for form in reqsForms %}
+          {% if not form.req.confirmed %}
+            <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
+              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient.fullname }}</p>
+              <p>{{ form.req.created_at }}</p>
+              <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
+                {% csrf_token %}
+                {{ form.form }}
+                <button type="submit">Save</button>
+              </form>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
       {% else %}
         <P class='blank history'>No Requests, yet!</p>
     {% endif %}
-    {% if accepts %}
+    {% if acceptsForm %}
       <ul class="history">
         <p>Accepted | {{ doctor }} {{ page }}</p>
-        {% for accect in accepts %}
-          <li id={% if accect.confirmed %} "confirmed" {% endif %} >
-            <p id="{{ accect.id }}">{{ accect.id }}. {{ accect.patient.fullname }}</p>
-            <p>{{ accect.created_at }}</p>
-          </li>  
+        {% for form in acceptsForm %}
+          {% if form.req.confirmed %}
+            <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
+              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient.fullname }}</p>
+              <p>{{ form.req.created_at }}</p>
+              <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
+                {% csrf_token %}
+                {{ form.form }}
+                <button type="submit">Save</button>
+              </form>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
       {% else %}

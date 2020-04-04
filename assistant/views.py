@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from assistant.decorators import assistant_only
 # models
 from patient.models import Request, Appointment
+from assistant.models import Assistant
 # date-time
 from django.utils import timezone
 # forms
@@ -12,8 +13,9 @@ from assistant.forms import RequestApproveForm
 @login_required
 @assistant_only
 def index(request):
-  reqs = Request.objects.filter(created_at__date__gte = timezone.now().date()).order_by('created_at')
-  accepts = Request.objects.filter(confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  assistant = Assistant.objects.get(user=request.user)
+  reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  accepts = Request.objects.filter(doctor = assistant.doctor, confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
   reqsForms = []
   acceptsForm = []
