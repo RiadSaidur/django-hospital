@@ -6,7 +6,6 @@ def patient_only(view_func):
     if request.user.groups.exists():
       group = request.user.groups.all()[0].name
     if group == 'assistant':
-      print(group)
       return redirect('assistant:index')
     else:
       return view_func(request, *args, **kwargs)

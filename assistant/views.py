@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # decorators
 from django.contrib.auth.decorators import login_required
 from assistant.decorators import assistant_only
@@ -12,28 +12,36 @@ from assistant.forms import RequestApproveForm
 @login_required
 @assistant_only
 def index(request):
-  reqs = Request.objects.filter(confirmed = False, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  reqs = Request.objects.filter(created_at__date__gte = timezone.now().date()).order_by('created_at')
   accepts = Request.objects.filter(confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
-  # forms = []
+  reqsForms = []
+  acceptsForm = []
 
-  # for req in reqs:
-  #   if request.method == 'POST':
-  #     form = 
-  #   collection = {
-  #     'req': req,
-  #     'form': 
-  #   }
-  #   forms.append(req.doctor)
+  pk = request.GET.get('pk', '')
 
-  # print(forms)
+  if request.method == "POST" and pk:
+    req = Request.objects.get(pk=pk)
+    if req:
+      form = RequestApproveForm(request.POST, instance=req)
+      if form.is_valid():
+        form.save()
+        redirect('assistant:index')
+        
 
-  if request.method == 'POST':
-    print(request.POST)
-  
+  for req in reqs:
+    form = {
+      'form': RequestApproveForm(instance = req),
+      'req': req
+    }
+    if req.confirmed:
+      acceptsForm.append(form)
+    else:
+      reqsForms.append(form)
+
   context = {
-    'reqs': reqs,
-    'accepts': accepts,
+    'reqsForms': reqsForms,
+    'acceptsForm': acceptsForm,
     'doctor': reqs[0].doctor
   }
 
