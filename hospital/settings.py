@@ -1,24 +1,26 @@
-import os
+from pathlib import Path
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'gg@oewn%s960#^b$7xb6wiv=-w8^=c6qm7+s^o3y0xv!zanvx)'
+
+SECRET_KEY = 'django-insecure-kag0(j=1cvye5j%tngskr3pp-_x$aub_9uvv3o***p225f^&o7'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 INSTALLED_APPS = [
-    'users',
-    'assistant',
-    'patient',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'assistant',
+    'patient',
 ]
 
 MIDDLEWARE = [
@@ -51,16 +53,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hospital.wsgi.application'
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hospital',
-        'USER': 'postgres',
-        'PASSWORD': 'psychopath',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -77,6 +77,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Dhaka'
@@ -87,11 +88,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'signin'
 
 MEDIA_URL = '/photos/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'photos')
+MEDIA_ROOT = BASE_DIR/'photos'
