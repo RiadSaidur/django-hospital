@@ -13,10 +13,14 @@ def update_notification(sender, instance, created, **kwargs):
     assistant.notifications += 1
     assistant.save()
   else:
-    if instance.confirmed:
-      Appointment.objects.create(request = instance)
-    if not instance.confirmed:
-      Appointment.objects.get(request = instance).delete()
+    try:
+      appointment = Appointment.objects.get(request = instance)
+      if instance.confirmed and not appointment:
+        Appointment.objects.create(request = instance)
+      if not instance.confirmed and appointment:
+          appointment.delete()
+    except Appointment.DoesNotExist:
+      print('fuck')
 
 @receiver(post_delete, sender=Request)
 def delete_notification(sender, instance, using, **kwargs):

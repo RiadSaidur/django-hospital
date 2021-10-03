@@ -4,11 +4,20 @@ from django.contrib.auth.decorators import login_required
 from assistant.decorators import assistant_only
 # models
 from patient.models import Request, Appointment
-from assistant.models import Assistant
+from assistant.models import Assistant, Doctor
 # date-time
 from django.utils import timezone
 # forms
 from assistant.forms import RequestApproveForm
+
+def saveRequest (req, data, pk):
+  req = Request.objects.get(pk=pk)
+  print(req, data, pk)
+  if req:
+    form = RequestApproveForm(data, instance=req)
+    if form.is_valid():
+      form.save()
+      redirect('assistant:index')
 
 @login_required
 @assistant_only
@@ -24,12 +33,13 @@ def index(request):
 
   if request.method == "POST" and pk:
     req = Request.objects.get(pk=pk)
+    doctor = Doctor.objects.filter(name = req.doctor)
     if req:
-      form = RequestApproveForm(request.POST, instance=req)
-      if form.is_valid():
-        form.save()
-        redirect('assistant:index')
-        
+      if not request.POST.get('confirmed'):
+        print(request)
+        saveRequest(req, request.POST, pk)
+      elif request.POST.get('confirmed', 'off') and doctor[0].available:
+        saveRequest(req, request.POST, pk)
 
   for req in reqs:
     form = {

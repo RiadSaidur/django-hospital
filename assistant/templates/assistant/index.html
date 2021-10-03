@@ -11,12 +11,12 @@
         {% for form in reqsForms %}
           {% if not form.req.confirmed %}
             <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
-              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient.fullname }}</p>
+              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient }}</p>
               <p>{{ form.req.created_at }}</p>
               <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
                 {% csrf_token %}
                 {{ form.form }}
-                <button type="submit">Save</button>
+                <button type="submit" {% if not doctor.available %} disabled {% endif %} >Save</button>
               </form>
             </li>
           {% endif %}
@@ -31,7 +31,7 @@
         {% for form in acceptsForm %}
           {% if form.req.confirmed %}
             <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
-              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient.fullname }}</p>
+              <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient }}</p>
               <p>{{ form.req.created_at }}</p>
               <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
                 {% csrf_token %}
