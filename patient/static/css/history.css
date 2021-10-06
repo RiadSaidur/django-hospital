@@ -11,6 +11,7 @@ main .history {
   padding: 1rem 1rem;
   border-left: 1px groove rgba(128, 128, 128, 0.7);
   background-color: rgba(102, 204, 204, 0.2);
+  /* color: white; */
 }
 
 #confirmed {
@@ -43,13 +44,13 @@ main .history {
 }
 
 .page-ctas > a {
-  background-color: rgba(102, 204, 204, 0.8);
+  background-color: #6ebd72e8;
   padding: .5rem 2rem;
 }
 
 .page-ctas > a:active {
   outline: none;
-  background-color: rgb(102, 204, 204);
+  background-color: #6EBD72;
   transform: scale(.9);
   transition: all 500ms ease-out;
 }
@@ -57,7 +58,7 @@ main .history {
   outline: none;
 }
 .page-ctas > a:hover {
-  background-color: rgb(102, 204, 204);
+  background-color: #6EBD72;
 }
 
 .page-ctas > a:last-child {

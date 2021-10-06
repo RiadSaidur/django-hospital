@@ -11,7 +11,8 @@ br {
 }
 
 body {
-  background-color: rgba(102, 204, 204, 0.7);
+  /* background-color: rgb(36, 90, 90); */
+  background-color: #e8edfd;
 }
 
 main {
@@ -55,6 +56,7 @@ form input {
 
 form button {
   margin-top: 1rem;
+  letter-spacing: .05rem;
 }
 
 .msg {
@@ -71,7 +73,9 @@ form button {
 }
 
 main p a {
-  color: blue;
+  /* color: blue; */
+  letter-spacing: .05rem;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 800px) {

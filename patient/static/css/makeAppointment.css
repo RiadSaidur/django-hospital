@@ -22,7 +22,12 @@ form {
   width: 90%;
   padding: 1% 5%;
   margin-top: 2rem;
+  /* color: white; */
 }
+
+/* h2 {
+  color: white;
+} */
 
 form select {
   padding: .5rem 0;
@@ -31,7 +36,8 @@ form select {
 }
 
 form button {
-  background-color: rgba(102, 204, 204, 0.8);
+  /* background-color: #e66980da; */
+  background-color: #6ebd72e8;
   padding: .7rem 1rem;
   font-size: 1rem;
   cursor: pointer;
@@ -40,7 +46,7 @@ form button {
 
 .form button:active {
   outline: none;
-  background-color: rgb(102, 204, 204);
+  background-color: #6EBD72;
   transform: scale(.9);
   transition: all 500ms ease-out;
 }
@@ -48,12 +54,17 @@ form button {
   outline: none;
 }
 .form button:hover {
-  background-color: rgb(102, 204, 204);
+  background-color: #6EBD72;
 }
 
 .history {
   display: none;
+  /* color: white; */
 }
+
+/* .history div a {
+  color: white;
+} */
 
 @media only screen and (min-width: 800px) {
   form {
