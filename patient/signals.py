@@ -20,7 +20,7 @@ def update_notification(sender, instance, created, **kwargs):
       if not instance.confirmed and appointment:
           appointment.delete()
     except Appointment.DoesNotExist:
-      print('fuck')
+      print("error")
 
 @receiver(post_delete, sender=Request)
 def delete_notification(sender, instance, using, **kwargs):
