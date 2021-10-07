@@ -18,13 +18,11 @@ button {
 }
 body {
   height: calc(100vh - 64px);
-  /* background-color: #fcfbfe; */
-  /* background-color: black; */
   background-color: 	#e8edfd;
   display: flex;
   flex-direction: column-reverse;
   font-family: 'Nunito', sans-serif;
-  margin-bottom: 4rem;
+  margin-bottom: 15rem;
 }
 #menu {
   display: none;
@@ -34,12 +32,17 @@ aside {
   bottom: 0;
   width: 100%;
   padding: 1rem 2rem;
-  /* background-color: rgba(102, 204, 204, 0.7); */
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  z-index: 2;
 }
 aside img {
   height: 1.8rem;
   cursor: pointer;
-  /* filter: invert(); */
 }
 aside > img {
   transform: translateX(.50rem);
@@ -49,9 +52,6 @@ aside ul {
   justify-content: space-around;
   align-items: center;
 }
-/* aside a {
-  color: white;
-} */
 aside ul li {
   display: block;
   border-radius: 4px;
@@ -73,8 +73,13 @@ header {
   height: 4rem;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(102, 204, 204, 0.25);
   z-index: 20;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 h2 a {
   color: #e66980;
@@ -83,25 +88,21 @@ header a {
   padding: 0 .25rem;
 }
 header div a {
-  /* color: white; */
   font-weight: bold;
   font-size: 1.1rem;
 }
-/* header h1 a {
-  color: white;
-} */
+header h1 a {
+  color: #e66980;
+}
 .btn {
   padding: .5rem 1rem;
   border-radius: 2rem;
   font-size: 1rem;
-  /* background-color: rgba(102, 204, 204, 0.8); */
-  /* background-color: #e66980e0; */
   background-color: #6ebd72e8;
   cursor: pointer;
 }
 .btn:active {
   outline: none;
-  /* background-color: rgb(102, 204, 204); */
   background-color: #6EBD72;
   transform: scale(.9);
   transition: all 500ms ease-out;
@@ -121,13 +122,12 @@ header div a {
   display: inherit;
 }
 .active {
-  /* background-color: rgb(102, 204, 204); */
   background-color: #e66980c9;
-  /* background-color: #6EBD72; */
 }
 @media only screen and (min-width: 800px) {
   body {
     flex-direction: row;
+    margin-bottom: 4rem;
   }
   #menu {
     display: initial;
@@ -141,7 +141,8 @@ header div a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: rgba(102, 204, 204, 0.2);
+    background-color: inherit;
+    box-shadow: none;
   }
   aside ul {
     display: initial;
@@ -158,7 +159,4 @@ header div a {
     font-size: 1.2rem;
     padding: .5rem .25rem;
   }
-  /* .active {
-    background-color: rgba(102, 204, 204, 0.8);
-  } */
 }

@@ -11,7 +11,11 @@ main .history {
   padding: 1rem 1rem;
   border-left: 1px groove rgba(128, 128, 128, 0.7);
   background-color: rgba(102, 204, 204, 0.2);
-  /* color: white; */
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 #confirmed {

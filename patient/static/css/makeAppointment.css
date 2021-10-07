@@ -11,6 +11,11 @@ main .form{
   align-items: center;
   justify-content: space-evenly;
   background-color: rgba(102, 204, 204, 0.2);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding: 2rem 0;
   margin: 0 1rem;
 }
@@ -22,12 +27,7 @@ form {
   width: 90%;
   padding: 1% 5%;
   margin-top: 2rem;
-  /* color: white; */
 }
-
-/* h2 {
-  color: white;
-} */
 
 form select {
   padding: .5rem 0;
@@ -36,7 +36,6 @@ form select {
 }
 
 form button {
-  /* background-color: #e66980da; */
   background-color: #6ebd72e8;
   padding: .7rem 1rem;
   font-size: 1rem;
@@ -59,12 +58,7 @@ form button {
 
 .history {
   display: none;
-  /* color: white; */
 }
-
-/* .history div a {
-  color: white;
-} */
 
 @media only screen and (min-width: 800px) {
   form {
@@ -76,8 +70,13 @@ form button {
     flex: 1;
     margin-right: 1rem;
     padding: 1rem 1rem;
-    border-left: 1px groove rgba(128, 128, 128, 0.7);
     background-color: rgba(102, 204, 204, 0.2);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-left: 1px groove rgba(128, 128, 128, 0.7);
   }
 
   #confirmed {

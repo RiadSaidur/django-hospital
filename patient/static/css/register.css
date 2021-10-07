@@ -11,7 +11,6 @@ br {
 }
 
 body {
-  /* background-color: rgb(36, 90, 90); */
   background-color: #e8edfd;
 }
 
@@ -73,7 +72,6 @@ form button {
 }
 
 main p a {
-  /* color: blue; */
   letter-spacing: .05rem;
   font-weight: bold;
 }
