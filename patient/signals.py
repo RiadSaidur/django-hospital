@@ -2,7 +2,6 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 # models
-from django.contrib.auth.models import User
 from .models import Request, Appointment
 from assistant.models import Assistant, Doctor
 
@@ -15,12 +14,12 @@ def update_notification(sender, instance, created, **kwargs):
   else:
     try:
       appointment = Appointment.objects.get(request = instance)
-      if instance.confirmed and not appointment:
-        Appointment.objects.create(request = instance)
       if not instance.confirmed and appointment:
           appointment.delete()
+          print('hello')
     except Appointment.DoesNotExist:
-      print("error")
+      if instance.confirmed:
+        Appointment.objects.create(request = instance)
 
 @receiver(post_delete, sender=Request)
 def delete_notification(sender, instance, using, **kwargs):
