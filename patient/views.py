@@ -24,7 +24,7 @@ def history(request, page):
   startAt = (page-1) * 5
   endAt = startAt + 5
 
-  histories = Request.objects.all()[startAt : endAt]
+  histories = Request.objects.filter(patient__user__username = request.user.username)[startAt : endAt]
   more = histories.count() == 5
 
   context = {
@@ -53,7 +53,7 @@ def makeAppointment(request):
   else: 
     form = RequestForm()
 
-  appointments = Request.objects.all()[:5]
+  appointments = Request.objects.filter(patient__user__username = request.user.username)[:5]
 
   context = {
     'form': form,

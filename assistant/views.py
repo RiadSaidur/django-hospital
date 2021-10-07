@@ -24,7 +24,7 @@ def saveRequest (req, data, pk):
 def index(request):
   assistant = Assistant.objects.get(user=request.user)
   reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
-  accepts = Request.objects.filter(doctor = assistant.doctor, confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  # accepts = Request.objects.filter(doctor = assistant.doctor, confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
   reqsForms = []
   acceptsForm = []
