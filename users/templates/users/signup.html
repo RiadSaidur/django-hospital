@@ -9,9 +9,10 @@
       <form method="POST">
         {% csrf_token %}
         {{ form }}
-        <button type="submit" class="btn">Sign Up</button>
+        <button type="submit" class="btn submit-btn" disabled>Sign Up</button>
       </form>
       <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
     </div>
   </main>
+<script src={% static 'js/signup.js' %}></script>
 {% endblock content %}

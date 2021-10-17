@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from users.decorators import only_unauthenticated
 from users.forms import UserRegistrationForm
+#for checking username availability only
+from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 @only_unauthenticated
 def index(request):
@@ -25,3 +28,10 @@ def signup(request):
   }
 
   return render(request, 'users/signup.html', context)
+
+def checkUsername(request, desiredUsername):
+  if request.method == 'GET':
+    if not User.objects.filter(username = desiredUsername).exists():
+      return JsonResponse({'isAvailable': True})
+    # returns false if username exists 
+    return JsonResponse({'isAvailable': False})
