@@ -31,6 +31,11 @@ main > div {
   transform: translateY(-70px);
   background-color: rgba(255, 255, 255, 0.4);
   padding-bottom: 1rem;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 main div p {
@@ -69,6 +74,9 @@ form button {
 
 .error {
   background-color: rgba(255, 0, 0, 0.404);
+  padding: .5rem;
+  border-radius: 4px;
+  margin: .5rem 0;
 }
 
 main p a {

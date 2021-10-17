@@ -100,6 +100,7 @@ header h1 a {
   font-size: 1rem;
   background-color: #6ebd72e8;
   cursor: pointer;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
 }
 .btn:active {
   outline: none;
