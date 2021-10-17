@@ -10,6 +10,7 @@
         <h3>Next Appointment</h3>
         {% if next_app %}
           <p>{{ next_app.request.doctor }}</p>
+          <p>State: {{ next_app.request.currentState }}</p>
           <p>{{ next_app.created_at }}</p>
         {% else %}
           <p>You have no Appointment at the moment.</p>
@@ -19,6 +20,7 @@
         <h3>Last Request</h3>
         {% if last_req %}
           <p>{{ last_req.doctor }}</p>
+          <p>State: {{ last_req.currentState }}</p>
           <p>{{ last_req.created_at }}</p>
         {% else %}
           <p>You have no Previous Requests.</p>

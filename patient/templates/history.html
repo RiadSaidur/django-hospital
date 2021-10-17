@@ -10,6 +10,7 @@
         {% for history in histories %}
           <li id={% if history.confirmed %} "confirmed" {% endif %} >
             <p>{{ history.doctor }}</p>
+            <p>State: {{ history.currentState }}</p>
             <p>{{ history.created_at }}</p>
           </li>  
         {% endfor %}

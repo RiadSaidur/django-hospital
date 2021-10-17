@@ -5,7 +5,7 @@ class PatientAdmin(admin.ModelAdmin):
   fields = ['user', 'fullname', 'dob', 'age', 'gender', 'picture']
 
 class RequestAdmin(admin.ModelAdmin):
-  fields = ['confirmed', 'patient', 'doctor']
+  fields = ['confirmed', 'patient', 'doctor', 'currentState']
 
 class AppointmentAdmin(admin.ModelAdmin):
   fields = ['request']

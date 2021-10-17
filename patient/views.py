@@ -46,6 +46,7 @@ def makeAppointment(request):
       patient = Patient.objects.get(user = request.user)
       instance = form.save(commit=False)
       instance.patient = patient
+      instance.currentState = patient.currentState
       instance.save()
       messages.success(request, 'Appointment Requested')
       form = RequestForm()
@@ -54,10 +55,12 @@ def makeAppointment(request):
     form = RequestForm()
 
   appointments = Request.objects.filter(patient__user__username = request.user.username)[:5]
+  currentState = Patient.objects.filter(user = request.user)[0].currentState
 
   context = {
     'form': form,
-    'appointments': appointments
+    'appointments': appointments,
+    'currentState': currentState
   }
   return render(request, 'makeAppointment.html', context)
 

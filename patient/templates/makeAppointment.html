@@ -12,6 +12,7 @@
           </div>
         {% endfor %}
       {% endif %}
+      <a href={% url 'update_profile' %}>Current State: {{ currentState }}</a>
       <form method="POST">
         {% csrf_token %}
         {{ form }}
@@ -24,6 +25,7 @@
         {% for appointment in appointments %}
           <li id={% if appointment.confirmed %} "confirmed" {% endif %} >
             <p>{{ appointment.doctor }}</p>
+            <p>State: {{ appointment.currentState }}</p>
             <p>{{ appointment.created_at }}</p>
           </li>  
         {% endfor %}

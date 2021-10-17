@@ -13,10 +13,10 @@
       <p class="light">{{ username }}</p>
       <p class="light">{{ email }}</p>
       <div class="details">
-        {% if patient.age and patient.gender %}
-          <p>{{ patient.age }} years old {{ patient.gender }}</p>
+        {% if patient.currentState %}
+          <p><span>Current State:</span> {{ patient.currentState }}</p
           {% else %}
-          <p>Please update your Age and Gender</p>
+          <p>Please update your Current State</p>
         {% endif %}
         {% if patient.dob %}
           <P>Date of Birth: {{ patient.dob }}</P>

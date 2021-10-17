@@ -9,10 +9,10 @@ class Patient(models.Model):
 
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   fullname = models.CharField(max_length=50, null=True, blank=True)
-  age = models.PositiveSmallIntegerField(null=True, blank=True)
   gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
   picture = models.ImageField(default='default.jpg')
   dob = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+  currentState = models.CharField(max_length=256, null=True, blank=True)
 
   def __str__(self):
     return str(self.user.username)
@@ -21,6 +21,7 @@ class Request(models.Model):
   confirmed = models.BooleanField(default=False)
   patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
   doctor = models.ForeignKey('assistant.Doctor', on_delete=models.CASCADE)
+  currentState = models.CharField(max_length=256, default='unspecified')
   created_at = models.DateTimeField(auto_now_add=True)
 
   class Meta:
