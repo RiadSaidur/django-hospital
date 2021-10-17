@@ -41,20 +41,23 @@ def index(request):
       elif request.POST.get('confirmed', 'off') and doctor[0].available:
         saveRequest(req, request.POST, pk)
 
-  for req in reqs:
-    form = {
-      'form': RequestApproveForm(instance = req),
-      'req': req
+  if reqs:
+    for req in reqs:
+      form = {
+        'form': RequestApproveForm(instance = req),
+        'req': req
+      }
+      if req.confirmed:
+        acceptsForm.append(form)
+      else:
+        reqsForms.append(form)
+
+    context = {
+      'reqsForms': reqsForms,
+      'acceptsForm': acceptsForm,
+      'doctor': reqs[0].doctor
     }
-    if req.confirmed:
-      acceptsForm.append(form)
-    else:
-      reqsForms.append(form)
 
-  context = {
-    'reqsForms': reqsForms,
-    'acceptsForm': acceptsForm,
-    'doctor': reqs[0].doctor
-  }
-
-  return render(request, 'assistant/index.html', context)
+    return render(request, 'assistant/index.html', context)
+  else:
+    return render(request, 'assistant/index.html', {})
