@@ -12,7 +12,6 @@ class Doctor(models.Model):
 class Assistant(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE)
-  notifications = models.PositiveIntegerField(default=0)
 
   def __str__(self):
     return str(self.user.username)

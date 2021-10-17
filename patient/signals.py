@@ -9,23 +9,16 @@ from assistant.models import Assistant, Doctor
 def update_notification(sender, instance, created, **kwargs):
   if created:
     assistant = Assistant.objects.get(doctor=instance.doctor)
-    assistant.notifications += 1
     assistant.save()
   else:
     try:
       appointment = Appointment.objects.get(request = instance)
       if not instance.confirmed and appointment:
           appointment.delete()
-          print('hello')
     except Appointment.DoesNotExist:
       if instance.confirmed:
         Appointment.objects.create(request = instance)
 
-@receiver(post_delete, sender=Request)
-def delete_notification(sender, instance, using, **kwargs):
-    assistant = Assistant.objects.get(doctor=instance.doctor)
-    assistant.notifications -= 1
-    assistant.save()
 
 @receiver(post_save, sender=Appointment)
 def update_slots(sender, instance, created, **kwargs):

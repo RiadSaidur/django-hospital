@@ -12,7 +12,6 @@ from assistant.forms import RequestApproveForm
 
 def saveRequest (req, data, pk):
   req = Request.objects.get(pk=pk)
-  print(req, data, pk)
   if req:
     form = RequestApproveForm(data, instance=req)
     if form.is_valid():
@@ -24,7 +23,6 @@ def saveRequest (req, data, pk):
 def index(request):
   assistant = Assistant.objects.get(user=request.user)
   reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
-  # accepts = Request.objects.filter(doctor = assistant.doctor, confirmed = True, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
   reqsForms = []
   acceptsForm = []
@@ -36,7 +34,6 @@ def index(request):
     doctor = Doctor.objects.filter(name = req.doctor)
     if req:
       if not request.POST.get('confirmed'):
-        print(request)
         saveRequest(req, request.POST, pk)
       elif request.POST.get('confirmed', 'off') and doctor[0].available:
         saveRequest(req, request.POST, pk)
