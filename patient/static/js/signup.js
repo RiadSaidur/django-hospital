@@ -2,19 +2,7 @@ window.addEventListener('load', () => {
 
   const usernameField = document.querySelector('#id_username')
   const emailField = document.querySelector('#id_email')
-  const confirmPasswordField = document.querySelector('#id_password2')
-  const submitButton = document.querySelector('.submit-btn')
-
-  const validations = {
-    avaiableUsername: false,
-    isEmail: false,
-    matchPassword: false
-  }
-
-  const updateSubmitButtonStatus = () => {
-    const validated = validations.avaiableUsername && validations.matchPassword && validations.isEmail
-    submitButton.disabled = !validated
-  }
+  const confirmPasswordField = document.querySelector('#id_password1')
 
   const clearErrorMessage = () => {
     const errorMessage = document.querySelector('.error-message')
@@ -36,29 +24,25 @@ window.addEventListener('load', () => {
 
     if(!response.isAvailable) {
       showUnavailableMessage()
-      validations.avaiableUsername = false
-      updateSubmitButtonStatus()
-    } else {
-      validations.avaiableUsername = true
-      updateSubmitButtonStatus()
     }
 
   }
 
-  const checkEmail = () => {
-    validations.isEmail = emailField.value ? true : false
-  }
-
   const checkPasswordMatch = () => {
-    const password1 = document.querySelector('#id_password1').value
-    const password2 = confirmPasswordField.value
-    validations.matchPassword = password1 === password2 && password1.length ? true : false
-    updateSubmitButtonStatus()
+    const password = document.querySelector('#id_password1').value
+    const username = usernameField.value
+    const messages = []
+    if(password.length < 8 ) messages.push(`<p class='error error-message'>Your password must contain at least 8 characters.<p/>`)
+    if(password == username ) messages.push(`<p class='error error-message'>Your password can’t be too similar to your other personal information.<p/>`)
+
+    messages.forEach(message => {
+      confirmPasswordField.insertAdjacentHTML('afterend', message)
+    })
   }
   
   usernameField.addEventListener('blur', checkUsernameAvailibility)
-  usernameField.addEventListener('focus', clearErrorMessage)
-  emailField.addEventListener('blur', checkEmail)
   confirmPasswordField.addEventListener('blur', checkPasswordMatch)
+  usernameField.addEventListener('focus', clearErrorMessage)
+  confirmPasswordField.addEventListener('focus', clearErrorMessage)
 
 })
