@@ -8,7 +8,7 @@ class RequestAdmin(admin.ModelAdmin):
   fields = ['confirmed', 'patient', 'doctor', 'currentState']
 
 class AppointmentAdmin(admin.ModelAdmin):
-  fields = ['request']
+  fields = ['request', 'appointmentDate']
 
 admin.site.register(Patient, PatientAdmin)
 admin.site.register(Request, RequestAdmin)

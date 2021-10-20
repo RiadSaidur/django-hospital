@@ -23,6 +23,7 @@ def saveRequest (req, data, pk):
 def index(request):
   assistant = Assistant.objects.get(user=request.user)
   reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  apointments = Appointment.objects.filter(request__doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
   reqsForms = []
   acceptsForm = []
@@ -40,14 +41,25 @@ def index(request):
 
   if reqs:
     for req in reqs:
-      form = {
-        'form': RequestApproveForm(instance = req),
-        'req': req
-      }
       if req.confirmed:
+        form = {
+          'form': RequestApproveForm(instance = req),
+          'req': req,
+          'apointment': apointments.filter(request = req)[0]
+        }
         acceptsForm.append(form)
       else:
+        form = {
+          'form': RequestApproveForm(instance = req),
+          'req': req
+        }
         reqsForms.append(form)
+
+
+      # if req.confirmed:
+      #   acceptsForm.append(form)
+      # else:
+      #   reqsForms.append(form)
 
     context = {
       'reqsForms': reqsForms,

@@ -32,6 +32,11 @@ main h2 {
   padding-bottom: .5rem;
 }
 
+.highlighted {
+  color: black;
+  font-weight: bold;
+}
+
 @media only screeb and (min-width:800px) {
   main {
     margin-bottom: 1rem;

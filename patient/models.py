@@ -32,7 +32,8 @@ class Request(models.Model):
 
 class Appointment(models.Model):
   request = models.ForeignKey('Request', on_delete=models.CASCADE)
+  appointmentDate = models.DateTimeField()
   created_at = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f'{self.request.doctor} - {self.request.patient}'
+    return f'{self.request.doctor} - {self.request.patient} - {self.appointmentDate}'

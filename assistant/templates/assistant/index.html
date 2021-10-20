@@ -13,7 +13,7 @@
             <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
               <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient }}</p>
               <p>State: {{ form.req.currentState }}</p>
-              <p>{{ form.req.created_at }}</p>
+              <p>Requested At: {{ form.req.created_at }}</p>
               <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
                 {% csrf_token %}
                 {{ form.form }}
@@ -34,7 +34,8 @@
             <li id={% if form.req.confirmed %} "confirmed" {% endif %} >
               <p id="{{ form.req.id }}">{{ form.req.id }}. {{ form.req.patient }}</p>
               <p>State: {{ form.req.currentState }}</p>
-              <p>{{ form.req.created_at }}</p>
+              <p>Appointment Date: {{ form.apointment.appointmentDate }}</p>
+              <p>Requested At: {{ form.req.created_at }}</p>
               <form method="POST" action="{{ request.path }}?pk={{ form.req.id }}">
                 {% csrf_token %}
                 {{ form.form }}
