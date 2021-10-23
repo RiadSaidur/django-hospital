@@ -21,52 +21,50 @@ def saveRequest (req, data, pk):
 @login_required
 @assistant_only
 def index(request):
-  assistant = Assistant.objects.get(user=request.user)
-  reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
-  apointments = Appointment.objects.filter(request__doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
+  try:
+    assistant = Assistant.objects.get(user=request.user)
+    reqs = Request.objects.filter(doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
+    apointments = Appointment.objects.filter(request__doctor = assistant.doctor, created_at__date__gte = timezone.now().date()).order_by('created_at')
 
-  reqsForms = []
-  acceptsForm = []
+    reqsForms = []
+    acceptsForm = []
 
-  pk = request.GET.get('pk', '')
+    pk = request.GET.get('pk', '')
 
-  if request.method == "POST" and pk:
-    req = Request.objects.get(pk=pk)
-    doctor = Doctor.objects.filter(name = req.doctor)
-    if req:
-      if not request.POST.get('confirmed'):
-        saveRequest(req, request.POST, pk)
-      elif request.POST.get('confirmed', 'off') and doctor[0].available:
-        saveRequest(req, request.POST, pk)
+    if request.method == "POST" and pk:
+      req = Request.objects.get(pk=pk)
+      doctor = Doctor.objects.filter(name = req.doctor)
+      if req:
+        if not request.POST.get('confirmed'):
+          saveRequest(req, request.POST, pk)
+        elif request.POST.get('confirmed', 'off') and doctor[0].available:
+          saveRequest(req, request.POST, pk)
 
-  if reqs:
-    for req in reqs:
-      if req.confirmed:
-        form = {
-          'form': RequestApproveForm(instance = req),
-          'req': req,
-          'apointment': apointments.filter(request = req)[0]
-        }
-        acceptsForm.append(form)
-      else:
-        form = {
-          'form': RequestApproveForm(instance = req),
-          'req': req
-        }
-        reqsForms.append(form)
+    if reqs:
+      for req in reqs:
+        if req.confirmed:
+          form = {
+            'form': RequestApproveForm(instance = req),
+            'req': req,
+            'apointment': apointments.filter(request = req)[0]
+          }
+          acceptsForm.append(form)
+        else:
+          form = {
+            'form': RequestApproveForm(instance = req),
+            'req': req
+          }
+          reqsForms.append(form)
 
 
-      # if req.confirmed:
-      #   acceptsForm.append(form)
-      # else:
-      #   reqsForms.append(form)
+      context = {
+        'reqsForms': reqsForms,
+        'acceptsForm': acceptsForm,
+        'doctor': reqs[0].doctor
+      }
 
-    context = {
-      'reqsForms': reqsForms,
-      'acceptsForm': acceptsForm,
-      'doctor': reqs[0].doctor
-    }
-
-    return render(request, 'assistant/index.html', context)
-  else:
+      return render(request, 'assistant/index.html', context)
+    else:
+      return render(request, 'assistant/index.html', {})
+  except Assistant.DoesNotExist:
     return render(request, 'assistant/index.html', {})
